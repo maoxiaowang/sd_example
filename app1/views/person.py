@@ -5,7 +5,7 @@ from common.views import AdvancedListView, CreateView
 
 class PersonList(AdvancedListView):
     model = Person
-    related_sets = ('company',)
+    many_to_many_fields = ('company',)
 
 
 class PersonCreate(CreateView):

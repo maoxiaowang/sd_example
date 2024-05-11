@@ -5,6 +5,7 @@ from common.views import AdvancedListView, CreateView, UpdateView, DeleteView
 
 class CompanyList(AdvancedListView):
     model = Company
+    related_sets = ('person_set',)
 
 
 class CompanyCreate(CreateView):
