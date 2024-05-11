@@ -74,6 +74,8 @@ class AdvancedListView(ListView):
     collection = None
     show_all = False
     total_length = None
+    page_size_key = 'page_size'
+    order_key = 'order_by'
 
     def __init__(self):
         self.object_list = None
@@ -164,10 +166,10 @@ class AdvancedListView(ListView):
 
     def get_ordering(self):
         """Return the field or fields to use for ordering the queryset."""
-        return self.request.GET.get('orderBy') or self.ordering
+        return self.request.GET.get(self.order_key) or self.ordering
 
     def get_page_size(self):
-        return str2int(self.request.GET.get('pageSize'), default=10)
+        return str2int(self.request.GET.get(self.page_size_key), default=10)
 
     def get_show_all(self):
         self.show_all = str2bool(self.request.GET.get('all', False))
